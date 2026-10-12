@@ -42,9 +42,10 @@ Hypotheses: (a) weight, horsepower and model year will be the strongest drivers 
 | `log_weight` | natural log of `weight` | the mpg-weight relationship is curved; the log makes it closer to linear (motivated by the GCSU poster) |
 | `power_to_weight` | `horsepower / weight` | captures how powerful a car is for its size |
 | `disp_per_cyl` | `displacement / cylinders` | average cylinder size, separates large from small engines |
-| `car_age` | `83 - model_year` | easier-to-read "age" scale; same information as year |
 | `origin_europe`, `origin_japan` | one-hot encoding of `origin` (USA as baseline) | linear models need numbers for categories |
 | Standardization | zero mean, unit variance, fitted on training data only | required so the Ridge penalty treats all features fairly |
+
+*Revision during the experiment:* an earlier draft of this plan also included `car_age = 83 - model_year`. It was removed because it is an exact linear copy of `model_year` (perfect collinearity) and adds no information.
 
 `name` is dropped. `acceleration`, `cylinders`, `displacement` and `horsepower` are kept in their raw form so the models can use them directly.
 
